@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<style>
+	#box{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		opacity: .5;
+		position: absolute;
+		top: 0;
+	}
+</style>
+<body>
+	<a href="www.baidu.com">baidu</a>
+	<div id="box">abc</div>
+</body>
+<script>
+	var objDiv = document.getElementById("box");
+	objDiv.addEventListener("touchstart", function(event){
+		console.log("touch handle");
+		event.preventDefault();
+
+		objDiv.innerHTML = event.targetTouches.length;
+		objDiv.addEventListener("touchmove", function(event){
+			objDiv.innerHTML = event.targetTouches.length;
+		});
+		objDiv.addEventListener("touched", function(event) {
+			console.log(objDiv.innerHTML = event.changedTouches.length);
+		});
+	})
+</script>
+</html>
